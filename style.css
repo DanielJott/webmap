@@ -1,47 +1,263 @@
-/* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Seitenaufbau */
+body {
+  font-family: Arial, sans-serif;            /* Schriftart für den gesamten Body */
+  font-size: 16px;                          /* Schriftgröße im Body */
+  line-height: 1.5;                         /* Zeilenhöhe im Body */
+  color: #333;                              /* Textfarbe im Body */
+  margin: 0;                                /* Kein Standardabstand um den Body */
+  display: flex;                            /* Flexbox-Layout für den Body */
+  flex-direction: column;                   /* Flex-Richtung als Spalte */
+  justify-content: center;                  /* Zentrieren des Inhalts entlang der Hauptachse */
+  min-height: 100dvh;                       /* Minimale Höhe des Viewports */
+}
+
+header {
+  background-color: #333;                   /* Hintergrundfarbe des Headers */
+  color: #fff;                              /* Textfarbe im Header */
+  padding: 1rem;                            /* Innenabstand im Header */
+  display: flex;                            /* Flexbox-Layout für den Header */
+  align-items: center;                      /* Zentrieren der Items entlang der Querachse */
+  justify-content: center;                  /* Zentrieren des Inhalts entlang der Hauptachse */
+  position: relative;                       /* Relative Positionierung für Positionierung der Logo */
+  height: 15dvh;                            /* Höhe des Headers */
+}
+
+main {
+  flex: 1;                                  /* Flex-Gewichtung für den Hauptbereich */
+  display: flex;                            /* Flexbox-Layout für den Hauptbereich */
+  justify-content: center;                  /* Zentrieren des Inhalts entlang der Hauptachse */
+  flex-direction: column;                   /* Flex-Richtung als Spalte */
+  padding: 1rem;                            /* Innenabstand im Hauptbereich */
+}
+
+footer {
+background-color: #333;                /* Hintergrundfarbe des Footers */
+color: #fff;                           /* Textfarbe im Footer */
+text-align: center;                    /* Zentrierte Textausrichtung im Footer */
+height: 2rem;                          /* Höhe des Footers */
+display: flex;                         /* Flexbox-Layout im Footer */
+justify-content: center;               /* Zentrieren des Inhalts entlang der Hauptachse */
+align-items: center;                   /* Zentrieren der Items entlang der Querachse */
+}
+
+/* Tierparklogo-Container */
+.logo-container {
+position: absolute;                        /* Absolute Positionierung für der Logo-Container */
+left: 60px;                                /* Abstand von der linken Seite */
+top: 50%;                                  /* Vertikale Zentrierung */
+transform: translateY(-50%);              /* Vertikale Zentrierung */
+}
+
+.logo {
+width: 160px;                              /* Breite des Logos */
+height: 160px;                             /* Höhe des Logos */
+border-radius: 50%;                       /* Kreisform für das Logo */
+transition: transform 0.5s;                /* Sanfter Übergang bei der Rotation */
+}
+
+.logo:hover { transform: rotate(360deg); }  /* Rotation des Logos bei Hover */
+
+/* Animierter (Unter-)Text*/
+.headline {
+height: 20vh;                            /* Höhe des Bereichs für die Überschrift */
+width: 100%;                             /* Breite des Bereichs für die Überschrift */
+flex-grow: 1;                           /* Flex-Gewichtung für das Wachstum */
+display: flex;                           /* Flexbox-Layout für die Überschrift */
+align-items: center;                     /* Zentrieren der Items entlang der Querachse */
+justify-content: center;                 /* Zentrieren des Inhalts entlang der Hauptachse */
+text-align: center;                      /* Textausrichtung der Überschrift */
+}
+
+h1 {
+text-align: center;                      /* Zentrierte Textausrichtung für die Überschrift */
+text-transform: uppercase;               /* Text in Großbuchstaben umwandeln */
+color: #F1FAEE;                          /* Farbe des Textes */
+font-size: 4rem;                         /* Schriftgröße der Überschrift */
+}
+
+.roller {
+height: 4.125rem;                        /* Höhe des Rollbereichs */
+line-height: 4rem;                       /* Zeilenhöhe für vertikale Ausrichtung des Textes */
+position: relative;                     /* Relative Positionierung für die Animation */
+overflow: hidden;                       /* Verstecken von überlaufendem Inhalt */
+width: 100%;                            /* Breite des Rollbereichs */
+display: flex;                           /* Flexbox-Layout für den Rollbereich */
+justify-content: center;                 /* Zentrieren des Inhalts entlang der Hauptachse */
+align-items: center;                     /* Zentrieren der Items entlang der Querachse */
+font-style: italic;                     /* Kursiver Textstil */
+font-size: 1.5rem;                      /* Schriftgröße im Rollbereich */
+color: #ffffcc;                         /* Farbe des Textes im Rollbereich */
+}
+
+#spare-time {
+font-size: 1.5rem;                      /* Schriftgröße für den Spare-Time-Bereich */
+font-style: italic;                    /* Kursiver Textstil */
+letter-spacing: 1rem;                  /* Buchstabenabstand */
+margin-top: 0;                         /* Kein Abstand nach oben */
+color: #A8DADC;                        /* Farbe des Textes */
+}
+
+.roller #rolltext {
+position: absolute;                     /* Absolute Positionierung für den Rolltext */
+top: 0;                                /* Ausgangspunkt der Animation */
+animation: slide 5s infinite;          /* Animationseigenschaften */
+}
+
+@keyframes slide {
+0% {
+  top: 0;                              /* Startposition der Animation */
+}
+25% {
+  top: -4rem;                          /* Position bei 25% der Animation */
+}
+50% {
+  top: -8rem;                          /* Position bei 50% der Animation */
+}
+}
+
+@media screen and (max-width: 600px) {     /* Media Query für Bildschirme mit maximal 600px Breite */
+h1 {
+  text-align: center;                  /* Zentrierte Textausrichtung */
+  text-transform: uppercase;           /* Text in Großbuchstaben umwandeln */
+  color: #F1FAEE;                      /* Farbe des Textes */
+  font-size: 2.125rem;                 /* Kleinere Schriftgröße für mobile Geräte */
+}
+
+.roller {
+  height: 2.6rem;                      /* Kleinere Höhe des Rollbereichs für mobile Geräte */
+  line-height: 2.125rem;              /* Kleinere Zeilenhöhe für mobile Geräte */
+}
+
+#spare-time {
+  font-size: 1rem;                    /* Kleinere Schriftgröße für mobile Geräte */
+  letter-spacing: 0.1rem;             /* Kleinere Buchstabenabstände für mobile Geräte */
+}
+
+.roller #rolltext {  
+  animation: slide-mob 5s infinite;   /* Animationseigenschaften für mobile Geräte */
+}
+
+@keyframes slide-mob {
+  0% {
+    top: 0;                          /* Startposition der mobilen Animation */
   }
-  
-  /* Basic styles */
-  body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
+  25% {
+    top: -2.125rem;                  /* Position bei 25% der mobilen Animation */
   }
-  
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
+  50% {
+    top: -4.25rem;                   /* Position bei 50% der mobilen Animation */
   }
-  
-  nav ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
+  72.5% {
+    top: -6.375rem;                 /* Position bei 72.5% der mobilen Animation */
   }
-  
-  nav ul li {
-    margin: 0 1rem;
+}
+}
+
+/* Sidebar */
+#sidebar {
+display: flex;                            /* Flexbox-Layout für die Sidebar */
+flex-direction: column;                   /* Flex-Richtung als Spalte */
+height: 100dvh;                           /* Höhe der Sidebar */
+overflow: auto;                           /* Automatisches Scrollen bei Überlauf */
+float: left;                              /* Sidebar links ausrichten */
+width: 24dvw;                             /* Breite der Sidebar */
+padding: 0.5rem;                          /* Innenabstand der Sidebar */
+background-color: #ececec;                /* Hintergrundfarbe der Sidebar */
+border-radius: 7px;                       /* Abgerundete Ecken der Sidebar */
+border: 3px solid #228B22;                /* Grüner Rahmen um die Sidebar */
+font-family: 'Lucida Sans', 'Arial', sans-serif;  /* Schriftart in der Sidebar */
+hyphens: auto;                            /* Silbentrennung aktivieren */
+text-align: justify;                      /* Textausrichtung im Blocksatz */
+}
+
+.sidebar-title {
+font-family: 'Dancing Script', cursive;   /* Schriftart für den Titel */
+font-size: 1.5rem;                        /* Schriftgröße des Titels */
+font-weight: bold;                        /* Fettdruck für den Titel */
+color: #228B22;                           /* Grüner Farbton für den Titel */
+background: linear-gradient(45deg, #FFEB3B, #FFCDD2, #BBDEFB); /* Bunter Hintergrund für Kinderfreundlichkeit */
+padding: 0.5rem;                          /* Innenabstand des Titels */
+border-radius: 10px;                      /* Abgerundete Ecken des Titels */
+text-align: left;                        /* Textausrichtung des Titels nach links */
+margin-bottom: 1rem;                     /* Abstand nach unten vom Titel */
+border: 3px solid #4CAF50;               /* Grüner Rahmen um den Titel */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichter Schatten für Dimension */
+}
+
+.sidebar-item {
+padding: 5px;                            /* Innenabstand der Sidebar-Items */
+cursor: pointer;                         /* Zeigerzeiger für klickbare Items */
+border-bottom: 1px solid #ccc;           /* Untere Grenze der Sidebar-Items */
+}
+
+.sidebar-item:hover {
+background-color: #ddd;                  /* Hintergrundfarbe bei Hover über Sidebar-Items */
+}
+
+.sidebar-item.active {
+background-color: #228B22;               /* Hintergrundfarbe für das aktive Item */
+color: white;                            /* Textfarbe für das aktive Item */
+border-bottom: 1px solid #444;           /* Untere Grenze für das aktive Item */
+}
+
+.active {
+      background-color: #ffeb3b;            /* Hintergrundfarbe für das aktive Element */
+      border: 1px solid #fbc02d;            /* Randfarbe für das aktive Element */
+      border-radius: 3px;                   /* Abgerundete Ecken für das aktive Element */
+}
+
+/* Karte */
+#map {
+  display: flex;                            /* Flexbox-Layout für die Karte */
+  flex-direction: column;                   /* Flex-Richtung als Spalte */
+  justify-content: center;                  /* Zentrieren des Inhalts entlang der Hauptachse */
+  float: right;                             /* Karte rechts ausrichten */
+  height: 100dvh;                           /* Höhe der Karte */
+  width: 70dvw;                             /* Breite der Karte */
+  padding: 0.5rem;                          /* Innenabstand der Karte */
+  background-color: #ececec;                /* Hintergrundfarbe der Karte */
+  border-radius: 7px;                       /* Abgerundete Ecken der Karte */
+  border: 3px solid #228B22;                /* Grüner Rahmen um die Karte */
+}
+
+/* Home-Button */
+.leaflet-control-home {
+      background: #F4F4F4;                   /* Hintergrundfarbe des Home-Buttons */
+      border: 1px solid grey;               /* Rahmenfarbe des Home-Buttons */
+      border-radius: 5px;                   /* Abgerundete Ecken des Home-Buttons */
+      width: 68px;                          /* Breite des Home-Buttons */
+      height: 35px;                         /* Höhe des Home-Buttons */
+      text-align: center;                   /* Textausrichtung im Home-Button */
+      line-height: 35px;                    /* Zeilenhöhe für vertikale Zentrierung des Texts */
+      cursor: pointer;                      /* Zeigerzeiger für klickbaren Home-Button */
   }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
+
+.leaflet-control-home img {
+      width: 25px;                          /* Breite des Bildes im Home-Button */
+      height: 25px;                         /* Höhe des Bildes im Home-Button */
+      vertical-align: middle;              /* Vertikale Ausrichtung des Bildes */
+}
+
+.leaflet-control-home:hover {
+  background-color: lightgrey;             /* Hintergrundfarbe bei Hover über den Home-Button */
+}
+
+/* Route-Buttons */
+.jugend-route button {
+      font-family: Arial, sans-serif;      /* Schriftart für die Buttons in der Jugend-Route */
+      font-size: 16px;                     /* Schriftgröße für die Buttons in der Jugend-Route */
+      border: 1px solid grey;              /* Rahmenfarbe der Buttons in der Jugend-Route */
+      border-radius: 5px;                 /* Abgerundete Ecken der Buttons in der Jugend-Route */
+      width: 70px;                        /* Breite der Buttons in der Jugend-Route */
+      cursor: pointer;                    /* Zeigerzeiger für klickbare Buttons */
   }
-  
-  main {
-    padding: 2rem;
+
+.kinder-route button {
+      font-family: Arial, sans-serif;      /* Schriftart für die Buttons in der Kinder-Route */
+      font-size: 16px;                     /* Schriftgröße für die Buttons in der Kinder-Route */
+      border: 1px solid grey;              /* Rahmenfarbe der Buttons in der Kinder-Route */
+      border-radius: 5px;                 /* Abgerundete Ecken der Buttons in der Kinder-Route */
+      width: 70px;                        /* Breite der Buttons in der Kinder-Route */
+      cursor: pointer;                    /* Zeigerzeiger für klickbare Buttons */
   }
-  
-  footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-  }
-  
+
