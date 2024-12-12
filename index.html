@@ -1,44 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zootastic</title>
+  <!-- Meta-Daten und Titel -->
+  <meta charset="UTF-8"> <!-- Zeichencodierung auf UTF-8 gesetzt -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsives Design, passt die Ansicht an verschiedene Geräte an -->
+  <title>Tierpark Olderdissen</title> <!-- Titel der Webseite -->
+
+  <!-- Externe CSS-Dateien einbinden -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-  <link rel="stylesheet" href="style.css"> 
-     
+     crossorigin=""/> <!-- Leaflet-Bibliothek für interaktive Karten -->
+  <link rel="stylesheet" href="style.css"> <!-- Lokales CSS-Stylesheet -->
+  <link rel="stylesheet" href="plugins\leaflet.legend.css" /> <!-- Lokales CSS für Kartenlegende -->
+
+  <!-- Externe Plugins für Karten und UI -->
+  <link href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" rel="stylesheet"/>
+  <link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+
+  <!-- Header-Bereich --> 
   <header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="logo-container">
+      <img src="logos\tierpark_logo.png" alt="Logo" class="logo"> <!-- Logo des Tierparks -->
+    </div>
+    <div class="headline">
+      <h1>Tierpark Olderdissen: 
+        <div class="roller"> <!-- Container für den animierten Rolltext -->
+          <span id="rolltext">
+            Ist Lernen mit Spaß<br/> <!-- Erster Textabschnitt -->
+            Ist Naturerlebnis<br/> <!-- Zweiter Textabschnitt -->
+            <span id="spare-time">Ist Heimat</span><br/> <!-- Dritter Textabschnitt, zusätzliche ID für individuelle CSS-Styleeigenschaften -->
+          </span>
+        </div>
+      </h1>
+    </div>
   </header>
 
+  <!-- Hauptaufbau der Seite -->
   <main>
     <section>
-      <h1>Welcome to Zootastic</h1>
-      <p>So many animations to come</p>
-      <div id="map" style="height: 600px;"></div>
+      <div id="sidebar"></div> <!-- Sidebar für Tierparkanlagen -->
+      <div id="map"></div> <!-- Hauptbereich für die Karte -->
     </section>
   </main>
 
+  <!-- Footer-Bereich -->
   <footer>
-    <p>&copy; 2023 Zootastic. All rights reserved.</p>
+    <p>&copy; 2024 Tierpark Olderdissen. All rights reserved by KLD.</p> <!-- Copyright-Hinweis -->
   </footer>
 
- <!--  --> 
+  <!-- Externe JavaScript-Bibliotheken und Plugins -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-  <script src="main.js"></script>
+     crossorigin=""></script> <!-- Leaflet JS-Bibliothek für interaktive Karten -->
   
+  <!-- Lokale GeoJSON-Dateien für die Karten -->
+  <script src="data\geojson_tierpark.js"></script> <!-- Datei mit den GeoJSON-Daten des Tierparks -->
+  <script src="data\geojson_markers.js"></script> <!-- Datei mit den Marker-Koordinaten -->
+  <script src="data\straßen.geojson"></script> <!-- Datei mit den Straßen-Koordinaten -->
+  
+  <!-- Externe und lokale Plugins für erweiterte Kartenfunktionen -->
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/hosuaby/Leaflet.SmoothMarkerBouncing@v3.0.3/dist/bundle.js"
+        crossorigin="anonymous"></script> <!-- Plugin für Marker-Animationen -->
+  <script src="plugins\L.Polyline.SnakeAnim.js"></script> <!-- Plugin für Routing -->
+  <script src="data\route.geojson"></script> <!-- Datei mit den Routing-Koordinaten -->
+  <script type="text/javascript" src="plugins\leaflet.legend.js"></script> <!-- Plugin für Kartenlegende -->
+
+  <!-- jQuery und UI-Plugins für den Slider-->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- jQuery Bibliothek -->
+  <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> <!-- jQuery UI Bibliothek -->
+  <script src="https://cdn.jsdelivr.net/gh/carlosign/LeafletSlider-LocalTimeV2@main/source/SliderControl.js"></script> <!-- Plugin für Slider-Kontrolle -->
+
+  <!-- Haupt-Skript der Webseite -->
+  <script src="main.js"></script> <!-- Wichtig! main.js muss zum Schluss, sonst funktionieren die Scripte der Plugins nicht -->
+ 
 </body>
 </html>
